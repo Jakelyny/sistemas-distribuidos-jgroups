@@ -1,6 +1,4 @@
-
 package util;
-
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
@@ -13,11 +11,8 @@ public class Mensagem implements Serializable {
 
     private String operacao;
     private Status status;
-
     private int inicial;
-
     private int finalP;
-
     private int primo;
 
     Map<String, String> params;
@@ -80,12 +75,10 @@ public class Mensagem implements Serializable {
         String p[] = protocolo.split(";");
         Mensagem m = new Mensagem(p[0]);
         try {
-            
-                for (int i = 1; i < p.length; i++) {
-                    String chaveValor[] = p[i].split(":");
-                    m.setParam(chaveValor[0], chaveValor[1]);
-                }
-            
+            for (int i = 1; i < p.length; i++) {
+                String chaveValor[] = p[i].split(":");
+                m.setParam(chaveValor[0], chaveValor[1]);
+            }
         } catch (Exception e) {
             System.out.println("Falha no parser da mensagem: " + e.getMessage());
             return null;
@@ -96,19 +89,17 @@ public class Mensagem implements Serializable {
 
         String p[] = protocolo.split(";");
         Mensagem m = new Mensagem(p[0]);
-        if( p[1].equals("OK") ){
+        if( p[1].equals("OK") ) {
             m.setStatus(Status.OK);
-        }else
+        }else {
             m.setStatus(Status.ERROR);
-        
+        }
         
         try {
-            
-                for (int i = 2; i < p.length; i++) {
-                    String chaveValor[] = p[i].split(":");
-                    m.setParam(chaveValor[0], chaveValor[1]);
-                }
-            
+            for (int i = 2; i < p.length; i++) {
+                String chaveValor[] = p[i].split(":");
+                m.setParam(chaveValor[0], chaveValor[1]);
+            }
         } catch (Exception e) {
             System.out.println("Falha no parser da mensagem: " + e.getMessage());
             return null;
@@ -127,5 +118,4 @@ public class Mensagem implements Serializable {
         }
         return m;
     }
-
 }
