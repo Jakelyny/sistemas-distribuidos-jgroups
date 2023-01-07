@@ -33,7 +33,6 @@ public class Peer extends ReceiverAdapter {
 
         Mensagem mEntrada = (Mensagem) msgEntrada.getObject();
         if(mEntrada.getOperacao().equals("iniciar")) {
-
             coordenador = true;
         }
         if(coordenador) {
